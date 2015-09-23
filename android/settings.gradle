@@ -1,0 +1,3 @@
+rootProject.name = 'KiwiiReact'
+
+include ':app'
