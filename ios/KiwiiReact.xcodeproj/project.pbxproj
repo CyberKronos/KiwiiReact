@@ -32,6 +32,7 @@
 		37744BAF1BB0BA54003C8825 /* ionicons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 37744BAA1BB0BA54003C8825 /* ionicons.ttf */; };
 		37744BB01BB0BA54003C8825 /* Material-Design-Iconic-Font.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 37744BAB1BB0BA54003C8825 /* Material-Design-Iconic-Font.ttf */; };
 		37744BB11BB0BA54003C8825 /* zocial-regular-webfont.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 37744BAC1BB0BA54003C8825 /* zocial-regular-webfont.ttf */; };
+		377B2AF31BC5F25F005A2C46 /* libRNOverlay.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 377B2AF21BC5F234005A2C46 /* libRNOverlay.a */; };
 		37E257571BB1F0AE008EF473 /* libRCTMapboxGL.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 37E2574D1BB1F048008EF473 /* libRCTMapboxGL.a */; };
 		37E257591BB1F0FD008EF473 /* Mapbox.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 37E257581BB1F0FD008EF473 /* Mapbox.bundle */; };
 		37E2575B1BB1F11A008EF473 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 37E2575A1BB1F11A008EF473 /* Settings.bundle */; };
@@ -120,6 +121,13 @@
 			remoteGlobalIDString = 2F5A3EB81ACDBF8000439386;
 			remoteInfo = ReactNativeIcons;
 		};
+		377B2AF11BC5F234005A2C46 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 377B2ADF1BC5F234005A2C46 /* RNOverlay.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 134814201AA4EA6300B7C361;
+			remoteInfo = RNOverlay;
+		};
 		37E2574C1BB1F048008EF473 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 37E257431BB1F048008EF473 /* RCTMapboxGL.xcodeproj */;
@@ -191,6 +199,7 @@
 		37744BAA1BB0BA54003C8825 /* ionicons.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = ionicons.ttf; path = "../node_modules/react-native-icons/ios/ReactNativeIcons/Libraries/FontAwesomeKit/ionicons.ttf"; sourceTree = "<group>"; };
 		37744BAB1BB0BA54003C8825 /* Material-Design-Iconic-Font.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Material-Design-Iconic-Font.ttf"; path = "../node_modules/react-native-icons/ios/ReactNativeIcons/Libraries/FontAwesomeKit/Material-Design-Iconic-Font.ttf"; sourceTree = "<group>"; };
 		37744BAC1BB0BA54003C8825 /* zocial-regular-webfont.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "zocial-regular-webfont.ttf"; path = "../node_modules/react-native-icons/ios/ReactNativeIcons/Libraries/FontAwesomeKit/zocial-regular-webfont.ttf"; sourceTree = "<group>"; };
+		377B2ADF1BC5F234005A2C46 /* RNOverlay.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RNOverlay.xcodeproj; path = "../node_modules/react-native-overlay/RNOverlay.xcodeproj"; sourceTree = "<group>"; };
 		37E257431BB1F048008EF473 /* RCTMapboxGL.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTMapboxGL.xcodeproj; path = "../node_modules/react-native-mapbox-gl/RCTMapboxGL.xcodeproj"; sourceTree = "<group>"; };
 		37E257581BB1F0FD008EF473 /* Mapbox.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Mapbox.bundle; sourceTree = "<group>"; };
 		37E2575A1BB1F11A008EF473 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
@@ -222,6 +231,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				377B2AF31BC5F25F005A2C46 /* libRNOverlay.a in Frameworks */,
 				37E257741BB22747008EF473 /* libRCTCamera.a in Frameworks */,
 				37E2576D1BB1F1BA008EF473 /* libz.dylib in Frameworks */,
 				37E2576B1BB1F1B0008EF473 /* libsqlite3.dylib in Frameworks */,
@@ -377,6 +387,14 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		377B2AE01BC5F234005A2C46 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				377B2AF21BC5F234005A2C46 /* libRNOverlay.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		37E257441BB1F048008EF473 /* Products */ = {
 			isa = PBXGroup;
 			children = (
@@ -414,6 +432,7 @@
 		832341AE1AAA6A7D00B99B32 /* Libraries */ = {
 			isa = PBXGroup;
 			children = (
+				377B2ADF1BC5F234005A2C46 /* RNOverlay.xcodeproj */,
 				37E257751BB22CD4008EF473 /* UIImagePickerManager */,
 				37E2576E1BB22727008EF473 /* RCTCamera.xcodeproj */,
 				37E257431BB1F048008EF473 /* RCTMapboxGL.xcodeproj */,
@@ -596,6 +615,10 @@
 					ProductGroup = 37744BA21BB0B9BE003C8825 /* Products */;
 					ProjectRef = 37744BA11BB0B9BE003C8825 /* ReactNativeIcons.xcodeproj */;
 				},
+				{
+					ProductGroup = 377B2AE01BC5F234005A2C46 /* Products */;
+					ProjectRef = 377B2ADF1BC5F234005A2C46 /* RNOverlay.xcodeproj */;
+				},
 			);
 			projectRoot = "";
 			targets = (
@@ -667,6 +690,13 @@
 			fileType = archive.ar;
 			path = libReactNativeIcons.a;
 			remoteRef = 37744BA51BB0B9BE003C8825 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		377B2AF21BC5F234005A2C46 /* libRNOverlay.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libRNOverlay.a;
+			remoteRef = 377B2AF11BC5F234005A2C46 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 		37E2574D1BB1F048008EF473 /* libRCTMapboxGL.a */ = {

@@ -1,6 +1,12 @@
 'use strict';
 
 var React = require('react-native');
+var Carousel = require('react-native-looped-carousel');
+var Dimensions = require('Dimensions');
+var Followers = require('../SharedViews/Followers');
+var Following = require('../SharedViews/Following');
+var styles = require('./css/styles');
+
 var {
   ScrollView,
   NavigationIOS,
@@ -11,9 +17,6 @@ var {
   Text,
   View,
 } = React;
-var Followers = require('../SharedViews/Followers');
-var Following = require('../SharedViews/Following');
-var styles = require('./css/styles');
 
 var ProfileTab = React.createClass({
   _goToFollowers: function() {
@@ -42,7 +45,7 @@ var ProfileTab = React.createClass({
       <ScrollView
         onScroll={() => { console.log('onScroll!'); }}
         scrollEventThrottle={200}
-        style={{height: 300, marginTop: 50,}}>
+        style={{height: 300,}}>
 
         <View>
           <View style={{flex: 1, flexDirection: 'row', margin: 10}}>
@@ -79,11 +82,12 @@ var ProfileTab = React.createClass({
           </View>
         </View>
 
-        <View style={{margin: 10}}>
+        <View>
           <SegmentedControlIOS
+              style={{padding: 20,}}
               values={['Lists', 'Cards']}
               selectedIndex={0}
-              tintColor='#ffa300'
+              tintColor='#FF1D23'
               onValueChange={(val) => {
                 this.setState({
                   selectedTab: val
@@ -99,14 +103,18 @@ var ProfileTab = React.createClass({
   renderSegmentedViews: function() {
     if (this.state.selectedTab === 'Lists') {
       return (
-        <View style={{flex: 1, flexDirection: 'row', marginHorizontal: 10, marginVertical: 5, borderColor: 'grey', borderWidth: 1}}>
-         <Image
-          style={{height: 75, width: 75}}
-          source={{uri: 'https://placeholdit.imgix.net/~text?txtsize=9&txt=100%C3%97100&w=100&h=100&fm=png'}} />
-          <View style={{padding: 10}}>
-            <Text style={{fontSize: 12, fontWeight: 'bold'}}>List Name</Text>
-            <Text style={{fontSize: 12, paddingVertical: 4}}>List Category</Text>
-          </View>
+        <View style={{flex: 1,}}>
+          <Carousel delay={10000000} style={{height: 250}}>
+            <View style={{backgroundColor:'blue', flex: 1}}>
+              <View style={{padding: 10, flex: 1, justifyContent: 'flex-end',}}>
+                <Text style={{color: '#FFFFFF', fontSize: 26, padding: 2,}}>Kiwii Guides</Text>
+                <Text style={{color: '#FFFFFF', fontSize: 16, padding: 2,}}>Recently Reviewed Restaurants</Text>
+                <Text style={{color: '#FFFFFF', fontSize: 16, padding: 2,}}>5 Restaurants</Text>
+              </View>
+            </View>
+            <View style={{backgroundColor:'red', flex: 1}}/>
+            <View style={{backgroundColor:'black', flex: 1}}/>
+          </Carousel>
         </View>
       )
     } else if (this.state.selectedTab === 'Cards') {

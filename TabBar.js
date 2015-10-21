@@ -6,12 +6,18 @@ var {
   TabBarIOS,
   Text,
   View,
+  ActivityIndicatorIOS,
+  NavigatorIOS,
+  Navigator,
 } = React;
+
 var HomeTab = require('./HomeTab/HomeTab');
-var ExploreTab = require('./ExploreTab/ExploreTab');
+var SearchTab = require('./SearchTab/SearchTab');
 var CardTab = require('./CardTab/CardTab');
 var ActivityTab = require('./ActivityTab/ActivityTab');
 var ProfileTab = require('./ProfileTab/ProfileTab');
+var Cards = require('./SharedViews/Cards');
+var LoadingOverlay = require('./Widgets/LoadingOverlay');
 
 var { TabBarIOS, } = require('react-native-icons');
 var TabBarItemIOS = TabBarIOS.Item;
@@ -20,14 +26,23 @@ var TabBar = React.createClass({
 
   getInitialState: function() {
     return {
-      selectedTab: 'exploreTab',
+      selectedTab: 'homeTab',
     };
+  },
+
+  renderActionList: function() {
+    console.log('hello world');
+    return (
+      <View style={styles.container}>
+        <LoadingOverlay isVisible={true} />
+      </View>
+    );
   },
 
   render: function() {
     return (
       <TabBarIOS
-        tintColor="orange">
+        tintColor="#FF1D23">
 
         <TabBarItemIOS
           name="Home"
@@ -37,28 +52,37 @@ var TabBar = React.createClass({
           accessibilityLabel="Home Tab"
           selected={this.state.selectedTab === 'homeTab'}
           onPress={() => {
-            this.setState({
-              selectedTab: 'homeTab',
-            });
+            if (this.state.selectedTab !== 'homeTab') {
+              this.setState({
+                selectedTab: 'homeTab'
+              });
+            } else if (this.state.selectedTab === 'homeTab') {
+              this.refs.homeRef.popToTop();
+            }
           }}>
           
-          <HomeTab navigator={this.props.navigator} />
+          {this.renderHomeView()}
         </TabBarItemIOS>
 
         <TabBarItemIOS
-          name="Explore"
+          name="Search"
           iconName={'fontawesome|compass'}
           title={''}
           iconSize={32}
-          accessibilityLabel="Explore Tab"
-          selected={this.state.selectedTab === 'exploreTab'}
+          accessibilityLabel="Search Tab"
+          selected={this.state.selectedTab === 'searchTab'}
           onPress={() => {
-            this.setState({
-              selectedTab: 'exploreTab',
-            });
+            if (this.state.selectedTab !== 'searchTab') {
+              this.setState({
+                selectedTab: 'searchTab'
+              });
+            } else if (this.state.selectedTab === 'searchTab') {
+              this.refs.searchRef.popToTop();
+            }
           }}>
+
           
-          <ExploreTab navigator={this.props.navigator} />
+          {this.renderSearchView()}
         </TabBarItemIOS>
 
         <TabBarItemIOS
@@ -69,9 +93,8 @@ var TabBar = React.createClass({
           accessibilityLabel="Card Tab"
           selected={this.state.selectedTab === 'cardTab'}
           onPress={() => {
-            this.setState({
-              selectedTab: 'cardTab',
-            });
+            this.renderActionList();
+            console.log('asdfasdf');
           }}>
           
           <CardTab navigator={this.props.navigator} />
@@ -85,12 +108,16 @@ var TabBar = React.createClass({
           accessibilityLabel="Activity Tab"
           selected={this.state.selectedTab === 'activityTab'}
           onPress={() => {
-            this.setState({
-              selectedTab: 'activityTab',
-            });
+            if (this.state.selectedTab !== 'activityTab') {
+              this.setState({
+                selectedTab: 'activityTab'
+              });
+            } else if (this.state.selectedTab === 'activityTab') {
+              this.refs.activityRef.popToTop();
+            }
           }}>
           
-          <ActivityTab navigator={this.props.navigator} />
+          {this.renderActivityView()}
         </TabBarItemIOS>
 
         <TabBarItemIOS
@@ -101,20 +128,91 @@ var TabBar = React.createClass({
           accessibilityLabel="Profile Tab"
           selected={this.state.selectedTab === 'profileTab'}
           onPress={() => {
-            this.setState({
-              selectedTab: 'profileTab',
-            });
+            if (this.state.selectedTab !== 'profileTab') {
+              this.setState({
+                selectedTab: 'profileTab'
+              });
+            } else if (this.state.selectedTab === 'profileTab') {
+              this.refs.profileRef.popToTop();
+            }
           }}>
           
-          <ProfileTab navigator={this.props.navigator} />
+          {this.renderProfileView()}
         </TabBarItemIOS>
       </TabBarIOS>
     );
   },
 
+  renderHomeView: function() {
+    return (
+      <NavigatorIOS
+        style={styles.container}
+        tintColor='#000000'
+        barTintColor='#FFFFFF'
+        titleTextColor='#000000'
+        ref='homeRef'
+        initialRoute={{
+          title: 'Home',
+          component: HomeTab,
+          backButtonTitle: ' ',
+        }} />
+        )
+  },
+
+  renderSearchView: function() {
+    return (
+      <NavigatorIOS
+        style={styles.container}
+        tintColor='#000000'
+        barTintColor='#FFFFFF'
+        titleTextColor='#000000'
+        ref='searchRef'
+        initialRoute={{
+          title: 'Search',
+          component: SearchTab,
+          backButtonTitle: ' ',
+        }} />
+        )
+  },
+
+  renderActivityView: function() {
+    return (
+      <NavigatorIOS
+        style={styles.container}
+        tintColor='#000000'
+        barTintColor='#FFFFFF'
+        titleTextColor='#000000'
+        ref='activityRef'
+        initialRoute={{
+          title: 'Activity Feed',
+          component: ActivityTab,
+          backButtonTitle: ' ',
+        }} />
+        )
+  },
+
+  renderProfileView: function() {
+    return (
+      <NavigatorIOS
+        style={styles.container}
+        tintColor='#000000'
+        barTintColor='#FFFFFF'
+        titleTextColor='#000000'
+        ref='profileRef'
+        initialRoute={{
+          title: 'Profile',
+          component: ProfileTab,
+          backButtonTitle: ' ',
+        }} />
+        )
+  },
+
 });
 
 var styles = StyleSheet.create({
+  container: {
+    flex: 1,
+  },
   tabContent: {
     flex: 1,
     alignItems: 'center',

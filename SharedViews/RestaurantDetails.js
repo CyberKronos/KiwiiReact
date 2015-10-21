@@ -26,8 +26,7 @@ var RestaurantDetails = React.createClass({
     return (
       <ScrollView
         onScroll={() => { console.log('onScroll!'); }}
-        scrollEventThrottle={200}
-        style={{height: 300,}}>
+        scrollEventThrottle={200}>
       
         <View style={{height:300}}>
           <Image 

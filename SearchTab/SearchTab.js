@@ -13,9 +13,7 @@ var {
 } = React;
 var Cards = require('../SharedViews/Cards');
 var styles = require('./css/styles');
-
 var Button = require('react-native-button');
-
 var PickerItemIOS = PickerIOS.Item;
 
 var CAR_MAKES_AND_MODELS = {
@@ -59,7 +57,7 @@ var CAR_MAKES_AND_MODELS = {
   },
 };
 
-var ExploreTab = React.createClass({
+var SearchTab = React.createClass({
   _goToCards: function() {
     var route = {
       component: Cards,
@@ -91,7 +89,10 @@ var ExploreTab = React.createClass({
         scrollEventThrottle={200}
         style={{height: 300,}}>
         
-        <View style={{marginTop: 75, paddingHorizontal: 10}}> 
+        <View style={{paddingHorizontal: 10}}> 
+          <Button style={{color: '#ffffff', backgroundColor: '#ffa300', marginVertical: 10, paddingVertical: 14,}} onPress={this._goToCards}>
+            Let's Eat!
+          </Button>
           <View>
             <Text>Choose a cuisine:</Text>
             <PickerIOS
@@ -161,4 +162,4 @@ var ExploreTab = React.createClass({
   }
 });
 
-module.exports = ExploreTab;
+module.exports = SearchTab;
